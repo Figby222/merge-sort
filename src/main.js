@@ -5,24 +5,25 @@ function sortVals(arr1, arr2) {
     let result = [];
 
     while(i < arr1.length || j < arr2.length) {
-        if (arr1[i] < arr2[j] || !(arr2[j])) { // if i of arr1 is smaller than j of arr2 or j of arr2 doesn't exist
+        if (arr1[i] < arr2[j] || j >= arr2.length) { // if i of arr1 is smaller than j of arr2 or j of arr2 doesn't exist
             result[k] = arr1[i]; // assign k of result to j of arr2
             i++;
             k++;
-        } else if (arr1[i] > arr2[j] || !(arr1[i])) { // if i of arr1 is bigger than j of arr2 or i of arr1 doesnt exist
+        } else if (arr1[i] > arr2[j] || i >= arr1.length) { // if i of arr1 is bigger than j of arr2 or i of arr1 doesnt exist
             result[k] = arr2[j]; // assign k of result to j of arr2
             j++;
             k++;
-        } else { // arr1[i] == arr2[j]
+        } else if (arr1[i] == arr2[j]){ // arr1[i] == arr2[j]
             result[k] = arr1[i];
             i++;
             k++;
             result[k] = arr2[j];
             j++;
             k++;
+        } else {
+            break;
         }
     }
-
     return result;
 }
 
@@ -44,3 +45,4 @@ function mergeSort(arr) {
 
 
 console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1]));
+console.log(mergeSort([105, 79, 100, 110]));
